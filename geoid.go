@@ -69,10 +69,10 @@ func (g *Geoid) GetCacheArea() (south, west, north, east float64) {
 	return
 }
 
-func (g *Geoid) GetHeight(lat, lon float64) {
-	C.geoid_get_height(g.m, C.double(lat), C.double(lon))
+func (g *Geoid) GetHeight(lat, lon float64) float64 {
+	return float64(C.geoid_get_height(g.m, C.double(lat), C.double(lon)))
 }
 
-func (g *Geoid) ConvertHeight(lat, lon, height float64, flag ConvertFlag) {
-	C.geoid_convert_height(g.m, C.double(lat), C.double(lon), C.double(height), C.int(flag))
+func (g *Geoid) ConvertHeight(lat, lon, height float64, flag ConvertFlag) float64 {
+	return float64(C.geoid_convert_height(g.m, C.double(lat), C.double(lon), C.double(height), C.int(flag)))
 }
