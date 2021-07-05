@@ -56,7 +56,7 @@ double geoid_get_height(geoid_t *gid, double lat, double lon) {
 
 double geoid_convert_height(geoid_t *gid, double lat, double lon, double h,
                             int flag) {
-  gid->id->ConvertHeight(lat, lon, h,
+  return gid->id->ConvertHeight(lat, lon, h,
                          static_cast<GeographicLib::Geoid::convertflag>(flag));
 }
 
