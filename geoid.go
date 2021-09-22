@@ -3,11 +3,12 @@ package geoid
 // #include <stdlib.h>
 // #include <string.h>
 // #include "geoid_api.h"
-// #cgo CFLAGS: -I ./  -I ./lib
-// #cgo CXXFLAGS: -I ./ -I ./lib
-// #cgo linux LDFLAGS:  -L ./lib -Wl,--start-group  -lstdc++ -lm -pthread -ldl -lcgeoid -lgeographic -Wl,--end-group
-// #cgo windows LDFLAGS: -L ./lib -lcgeoid -lgeographic
-// #cgo darwin LDFLAGS: -L　./lib -lcgeoid -lgeographic
+// #cgo CFLAGS:   -I ./lib
+// #cgo CXXFLAGS:   -I ./lib
+// #cgo linux LDFLAGS:  -L ./lib/linux -Wl,--start-group  -lstdc++ -lm -pthread -ldl -lcgeoid -lgeographic -Wl,--end-group
+// #cgo windows LDFLAGS:  -L ./lib/windows -Wl,--start-group  -lstdc++ -lm   -lcgeoid -lgeographic -Wl,--end-group
+// #cgo darwin LDFLAGS: -L　./lib/darwin -lcgeoid -lgeographic
+// #cgo darwin ,arm LDFLAGS: -L　./lib/darwin_arm -lcgeoid -lgeographic
 import "C"
 import (
 	"runtime"
