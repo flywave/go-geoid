@@ -9,7 +9,7 @@ package geoid
 // #cgo darwin CXXFLAGS: -I ./ -I ./lib -std=gnu++14
 // #cgo linux LDFLAGS:  -L ./lib/linux -Wl,--start-group  -lstdc++ -lm -pthread -ldl -lcgeoid -lgeographic -Wl,--end-group
 // #cgo windows LDFLAGS: -L ./lib -lcgeoid -lgeographic
-// #cgo darwin LDFLAGS: -L　./lib/darwin -lcgeoid -lgeographic
+// #cgo darwin LDFLAGS:  -L /usr/lib -lc++ -L　./lib/darwin -lgeographic -lcgeoid
 import "C"
 import (
 	"runtime"
