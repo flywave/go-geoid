@@ -3,14 +3,13 @@ package geoid
 import "testing"
 
 func TestGeoid(t *testing.T) {
-	SetGeoidPath("./data")
 
-	lat := float64(10)
-	lon := float64(20)
-	alt := float64(30)
+	lat := float64(36.35697678803291)
+	lon := float64(112.84426434425896)
+	alt := float64(347)
 
-	g := NewGeoid(EGM84, false)
-	galt := g.ConvertHeight(lat, lon, alt, ELLIPSOIDTOGEOID)
+	g := NewGeoid(EGM2008, false)
+	galt := g.ConvertHeight(lat, lon, alt, GEOIDTOELLIPSOID)
 
 	if galt == 0 {
 		t.FailNow()

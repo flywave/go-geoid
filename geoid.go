@@ -11,12 +11,23 @@ package geoid
 // #cgo darwin ,arm LDFLAGS: -L　./lib/darwin_arm -lcgeoid -lgeographic
 import "C"
 import (
+	"path/filepath"
 	"runtime"
 	"unsafe"
 )
 
 type Geoid struct {
 	m *C.struct__geoid_t
+}
+
+func getCurrentDir() string {
+	_, file, _, _ := runtime.Caller(1)
+	return filepath.Dir(file)
+}
+
+func init() {
+	dir := getCurrentDir()
+	SetGeoidPath(filepath.Join(dir, "./data"))
 }
 
 func SetGeoidPath(path string) {
