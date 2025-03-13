@@ -7,8 +7,8 @@ package geoid
 // #cgo CXXFLAGS:   -I ./lib
 // #cgo linux LDFLAGS:  -L ./lib/linux -Wl,--start-group  -lstdc++ -lm -pthread -ldl -lcgeoid -lgeographic -Wl,--end-group
 // #cgo windows LDFLAGS:  -L ./lib/windows -Wl,--start-group  -lstdc++ -lm   -lcgeoid -lgeographic -Wl,--end-group
-// #cgo darwin LDFLAGS: -L　./lib/darwin -lcgeoid -lgeographic
-// #cgo darwin ,arm LDFLAGS: -L　./lib/darwin_arm -lcgeoid -lgeographic
+// #cgo darwin,amd64 LDFLAGS: -L　./lib/darwin -lcgeoid -lgeographic -lc++
+// #cgo darwin,arm64 LDFLAGS: -L　./lib/darwin_arm -lcgeoid -lgeographic -lc++
 import "C"
 import (
 	"path/filepath"

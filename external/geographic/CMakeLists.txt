@@ -115,30 +115,6 @@ set_property (CACHE GEOGRAPHICLIB_PRECISION PROPERTY STRINGS 1 2 3 4 5)
 
 set (LIBNAME geographic)
 
-if (NOT MSVC)
-  # Set the run time path for shared libraries for non-Windows machines.
-  # (1) include link path for external packages (not needed with
-  # GeographicLib because there are no external packages).  This only
-  # makes sense for native builds.
-  if (NOT CMAKE_CROSSCOMPILING)
-    set (CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
-  endif ()
-  # (2) include installed path for GeographicLib.
-  if (NOT APPLE)
-    # Use relative path so that package is relocatable
-    set (CMAKE_INSTALL_RPATH "\$ORIGIN/../lib${LIB_SUFFIX}")
-  else ()
-    if (CMAKE_VERSION VERSION_LESS 2.8.12)
-      # Use absolute path with MacOSx
-      set (CMAKE_INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}")
-    else ()
-      # cmake 2.8.12 introduced a way to make the package relocatable.
-      # See also INSTALL_RPATH property on the tools.
-      set (CMAKE_MACOSX_RPATH ON)
-    endif ()
-  endif ()
-endif ()
-
 include (CheckTypeSize)
 check_type_size ("long double" LONG_DOUBLE BUILTIN_TYPES_ONLY)
 set (GEOGRAPHICLIB_HAVE_LONG_DOUBLE ${HAVE_LONG_DOUBLE})
@@ -314,15 +290,6 @@ configure_file (
   include/GeographicLib/Config.h.in
   include/GeographicLib/Config.h
   @ONLY )
-
-if (WIN32)
-  # static libaries
-  set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
-  # shared libraries
-  set (CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
-  # executables and dlls
-  set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
-endif ()
 
 set_property (GLOBAL PROPERTY USE_FOLDERS ON)
 
