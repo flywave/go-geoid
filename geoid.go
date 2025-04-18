@@ -5,7 +5,8 @@ package geoid
 // #include "geoid_api.h"
 // #cgo CFLAGS:   -I ./lib
 // #cgo CXXFLAGS:   -I ./lib
-// #cgo linux LDFLAGS:  -L ./lib/linux -Wl,--start-group  -lstdc++ -lm -pthread -ldl -lcgeoid -lgeographic -Wl,--end-group
+// #cgo linux,amd64 LDFLAGS:  -L ./lib/linux -Wl,--start-group  -lstdc++ -lm -pthread -ldl -lcgeoid -lgeographic -Wl,--end-group
+// #cgo linux,arm64 LDFLAGS:  -L ./lib/linux_arm -Wl,--start-group  -lstdc++ -lm -pthread -ldl -lcgeoid -lgeographic -Wl,--end-group
 // #cgo windows LDFLAGS:  -L ./lib/windows -Wl,--start-group  -lstdc++ -lm   -lcgeoid -lgeographic -Wl,--end-group
 // #cgo darwin,amd64 LDFLAGS: -L　./lib/darwin -lcgeoid -lgeographic -lc++
 // #cgo darwin,arm64 LDFLAGS: -L　./lib/darwin_arm -lcgeoid -lgeographic -lc++
