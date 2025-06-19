@@ -10,6 +10,22 @@ const (
 	UNKNOWN VerticalDatum = 4
 )
 
+func (v *VerticalDatum) ToString() string {
+	switch *v {
+	case HAE:
+		return "HAE"
+	case EGM84:
+		return "EGM84"
+	case EGM96:
+		return "EGM96"
+	case EGM2008:
+		return "EGM2008"
+	case UNKNOWN:
+		return "UNKNOWN"
+	}
+	return "HAE"
+}
+
 type ConvertFlag int32
 
 const (
