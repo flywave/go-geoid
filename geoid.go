@@ -28,7 +28,7 @@ func getCurrentDir() string {
 
 func init() {
 	dir := getCurrentDir()
-	SetGeoidPath(filepath.Join(dir, "./data"))
+	SetGeoidPath(filepath.Join(dir, "./egm_data"))
 }
 
 func SetGeoidPath(path string) {
