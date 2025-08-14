@@ -12,6 +12,7 @@ package geoid
 // #cgo darwin,arm64 LDFLAGS: -L　./libs/darwin_arm -lcgeoid -lgeographic -lc++
 import "C"
 import (
+	"os"
 	"path/filepath"
 	"runtime"
 	"unsafe"
@@ -27,6 +28,11 @@ func getCurrentDir() string {
 }
 
 func init() {
+	egmData := os.Getenv("EGM_DATA")
+	if egmData == "" {
+		SetGeoidPath(egmData)
+		return
+	}
 	dir := getCurrentDir()
 	SetGeoidPath(filepath.Join(dir, "./data"))
 }
