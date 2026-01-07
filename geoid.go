@@ -29,7 +29,7 @@ func getCurrentDir() string {
 
 func init() {
 	egmData := os.Getenv("EGM_DATA")
-	if egmData == "" {
+	if egmData != "" {
 		SetGeoidPath(egmData)
 		return
 	}
